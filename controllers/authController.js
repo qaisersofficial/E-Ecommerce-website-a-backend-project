@@ -2,10 +2,12 @@ const userModel = require("../models/user-model");
 const bcrypt = require('bcrypt');
 const { generateToken } = require('../utils/generateToken');
 
-module.exports.registerUser = (req, res) => {
+module.exports.registerUser = async (req, res) => {
     try{
      let {fullname, email, password} = req.body;
  
+     let user = await userModel.findOne({ email });
+        if(user) return res.send("user already exists, please login");
      bcrypt.genSalt(10, (err, salt) => {
          bcrypt.hash(password, salt, async (err, hash) => {
              if(err) return res.send(err.message);
