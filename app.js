@@ -20,6 +20,7 @@ app.set('view engine', 'ejs');
 app.use('/users', usersRouter );
 app.use('/products', productsRouter );
 app.use('/owners', ownersRouter );
+app.use('/', require('./routes/index'));
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
