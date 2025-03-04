@@ -3,6 +3,7 @@ const router = express.Router();
 const userModel = require("../models/user-model");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { generateToken } = require('../utils/generateToken');
 
 router.get('/', (req, res) => {
     res.send('user route');
@@ -21,8 +22,9 @@ router.get('/register',async (req, res) => {
                     email,
                     password: hash
                 });
-               let token = jwt.sign({ email, id:user.id }, 'qaiserEcommerce', { expiresIn: '1h' });
-               res.cookie('token', token, { httpOnly: true });
+            //    let token = jwt.sign({ email, id:user.id }, 'qaiserEcommerce', { expiresIn: '1h' });
+                let token = generateToken(user);
+                res.cookie('token', token, { httpOnly: true });
                 res.send("user created");
             }
         });
