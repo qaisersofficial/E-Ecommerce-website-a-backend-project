@@ -1,18 +1,19 @@
 <%- include('./partials/header') %>
+   <% user.cart.forEach(function(item){ %>
     <div class="w-full h-screen flex items-start px-20 py-20 gap-10">
         <div class="w-[30%] rounded-md overflow-hidden">
-            <div class="w-full h-80 flex justify-center items-center bg-[<%= user.cart[0].bgcolor %>]">
-                <img src="data:image/jpeg;base64, <%= user.cart[0].image.toString('base64') %>" alt="" class="h-[18rem]">
+            <div class="w-full h-80 flex justify-center items-center bg-[<%= item.bgcolor %>]">
+                <img src="data:image/jpeg;base64, <%= item.image.toString('base64') %>" alt="" class="h-[18rem]">
             </div>
-            <div class="w-full flex justify-between px-5 py-4 bg-[<%= user.cart[0].panelcolor %>]">
-                <h3 class="text-2xl text-[<%= user.cart[0].textcolor %>]">Clinge Bag</h3>
+            <div class="w-full flex justify-between px-5 py-4 bg-[<%= item.panelcolor %>]">
+                <h3 class="text-2xl text-[<%= item.textcolor %>]">Clinge Bag</h3>
                 <div class="flex items-center gap-2">
-                    <i class="w-7 h-7 flex rounded-full text-[<%= user.cart[0].bgcolor %>] bg-[<%= user.cart[0].textcolor%>] hover:text-[<%= user.cart[0].textcolor%>] hover:bg-[<%= user.cart[0].bgcolor %>] items-center justify-center ri-add-line hover:cursor-pointer"></i>
-                    <div class="px-2 py-1 rounded-md bg-[<%= user.cart[0].textcolor%>] text-[<%= user.cart[0].bgcolor %>]">01</div>
-                    <i class="w-7 h-7 bg-[<%= user.cart[0].textcolor%>] text-[<%= user.cart[0].bgcolor %>] flex rounded-full items-center justify-center ri-subtract-line hover:text-[<%= user.cart[0].textcolor%>] hover:bg-[<%= user.cart[0].bgcolor %>] hover:cursor-pointer"></i>
+                    <i class="w-7 h-7 flex rounded-full text-[<%= item.bgcolor %>] bg-[<%= item.textcolor%>] hover:text-[<%= item.textcolor%>] hover:bg-[<%= item.bgcolor %>] items-center justify-center ri-add-line hover:cursor-pointer"></i>
+                    <div class="px-2 py-1 rounded-md bg-[<%= item.textcolor%>] text-[<%= item.bgcolor %>]">01</div>
+                    <i class="w-7 h-7 bg-[<%= item.textcolor%>] text-[<%= item.bgcolor %>] flex rounded-full items-center justify-center ri-subtract-line hover:text-[<%= item.textcolor%>] hover:bg-[<%= item.bgcolor %>] hover:cursor-pointer"></i>
                 </div>
             </div>
-            <div class="flex items-center text-[<%= user.cart[0].bgcolor %>] justify-between px-5 py-3 bg-[<%= user.cart[0].textcolor%>]">
+            <div class="flex items-center text-[<%= item.bgcolor %>] justify-between px-5 py-3 bg-[<%= item.textcolor%>]">
                 <h4 class="text-lg">Net Total</h4>
                 <h2 class="text-lg "><span class="font-bold">PKR</span> &nbsp; <%= bill %>
                 </h2>
@@ -23,11 +24,11 @@
             <div class="px-10 mt-5">
                 <div class="flex mt-2">
                     <h4 class="w-1/3">Total MRP</h4>
-                    <h4><span class="font-bold">PKR</span> &nbsp; <%= user.cart[0].price %></h4>
+                    <h4><span class="font-bold">PKR</span> &nbsp; <%= item.price %></h4>
                 </div>
                 <div class="flex mt-2">
                     <h4 class="w-1/3">Discount on MRP</h4>
-                    <h4><span class="font-bold">PKR</span> &nbsp; <%= Number(user.cart[0].discount) %></h4>
+                    <h4><span class="font-bold">PKR</span> &nbsp; <%= Number(item.discount) %></h4>
                 </div>
                 <div class="flex mt-2">
                     <h4 class="w-1/3">Platform Fee</h4>
@@ -38,7 +39,7 @@
                     <h4 class="text-red-500">FREE</h4>
                 </div>
             </div>
-            <div class="w-full h-[1px] bg-black mt-10"></div>
+            <div class="w-full h-[1px] bg-white mt-10"></div>
             <div class="flex mt-5">
                 <h3 class="w-1/3 text-xl">Total Amount</h3>
                 <h3 class="font-semibold text-xl text-green-600">
@@ -49,4 +50,5 @@
             <form action=""></form>
         </div>
     </div>
+    <% }) %>
     <%- include('./partials/footer') %>
