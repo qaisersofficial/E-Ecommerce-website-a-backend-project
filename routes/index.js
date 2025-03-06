@@ -5,7 +5,7 @@ const productModel = require('../models/poduct-model');
 
 router.get('/', (req, res) => {
     let error = req.flash('error');
-    res.render('index', { error}); // Ensure error is always passed
+    res.render('index', { error, loggedin: false }); // Ensure error is always passed
 });
 
 router.get('/shop', isLoggedin, async (req, res) => {

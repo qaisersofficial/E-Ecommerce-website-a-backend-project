@@ -17,6 +17,15 @@
 </head>
 
 <body class="font-['helvetica_now_display'] bg-black text-white">
-    <nav class="w-full fixed top-0 left-0 px-5 py-3">
+      <nav class="w-full px-5 py-3  flex justify-between items-center">
         <h3 class=" font-nastaliq text-pink-900 text-3xl font-bold ">بستا</h3>
+        <% var loggedin = typeof loggedin !== "undefined" ? loggedin: true %>
+        <% if(loggedin){ %>
+          <div class="flex gap-5 ">
+            <a class="hover:text-gray-400"  href="">Shop</a>
+            <a class="hover:text-gray-400"  href="">Cart</a>
+            <a class="hover:text-gray-400"  href="">My Account</a>
+            <a  href="" class="text-red-700 hover:text-red-500">Logout</a>
+          </div>
+        <% } %>
     </nav>
