@@ -21,7 +21,7 @@ module.exports.registerUser = async (req, res) => {
              //    let token = jwt.sign({ email, id:user.id }, 'qaiserEcommerce', { expiresIn: '1h' });
                  let token = generateToken(user);
                  res.cookie('token', token, { httpOnly: true });
-                 res.send("user created");
+                 res.redirect('/');
              }
          });
      });
@@ -44,7 +44,7 @@ module.exports.loginUser = async (req, res) => {
             if(result){
                 let token = generateToken(user);
                 res.cookie('token', token, { httpOnly: true });
-                res.send("user logged in");
+                res.redirect('/shop');
             }else{
                 res.send("password incorrect");
             }
@@ -55,3 +55,10 @@ module.exports.loginUser = async (req, res) => {
      res.send(err.message);
     }
     }
+
+// /users/logout
+// logout a user
+module.exports.logoutUser = async (req, res) => {
+    res.clearCookie('token');
+    res.redirect('/'); 
+}
